@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pt.mapper.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.pt.model.Company" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="certifiedStatus" property="certifiedstatus" jdbcType="INTEGER" />
+    <result column="companySize" property="companysize" jdbcType="INTEGER" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="legalPerson" property="legalperson" jdbcType="VARCHAR" />
+    <result column="credentials" property="credentials" jdbcType="VARCHAR" />
+    <result column="video" property="video" jdbcType="VARCHAR" />
+    <result column="companyNature" property="companynature" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="DOUBLE" />
+    <result column="latitude" property="latitude" jdbcType="DOUBLE" />
+    <result column="contactor" property="contactor" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="sponsor" property="sponsor" jdbcType="VARCHAR" />
+    <result column="auditcomments" property="auditcomments" jdbcType="VARCHAR" />
+    <result column="auditorId" property="auditorid" jdbcType="INTEGER" />
+    <result column="auditTime" property="audittime" jdbcType="TIMESTAMP" />
+    <result column="creatorId" property="creatorid" jdbcType="BIGINT" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="modifierId" property="modifierid" jdbcType="BIGINT" />
+    <result column="modifyTime" property="modifytime" jdbcType="TIMESTAMP" />
+    <result column="cityId" property="cityid" jdbcType="INTEGER" />
+    <result column="isHire" property="ishire" jdbcType="INTEGER" />
+    <result column="isApplicationIn" property="isapplicationin" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, status, certifiedStatus, companySize, logo, legalPerson, credentials, video, 
+    companyNature, description, address, longitude, latitude, contactor, telephone, sponsor, 
+    auditcomments, auditorId, auditTime, creatorId, createTime, modifierId, modifyTime, 
+    cityId, isHire, isApplicationIn
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from company
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pt.model.Company" >
+    insert into company (id, name, status, 
+      certifiedStatus, companySize, logo, 
+      legalPerson, credentials, video, 
+      companyNature, description, address, 
+      longitude, latitude, contactor, 
+      telephone, sponsor, auditcomments, 
+      auditorId, auditTime, creatorId, 
+      createTime, modifierId, modifyTime, 
+      cityId, isHire, isApplicationIn
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{certifiedstatus,jdbcType=INTEGER}, #{companysize,jdbcType=INTEGER}, #{logo,jdbcType=VARCHAR}, 
+      #{legalperson,jdbcType=VARCHAR}, #{credentials,jdbcType=VARCHAR}, #{video,jdbcType=VARCHAR}, 
+      #{companynature,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, #{contactor,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{sponsor,jdbcType=VARCHAR}, #{auditcomments,jdbcType=VARCHAR}, 
+      #{auditorid,jdbcType=INTEGER}, #{audittime,jdbcType=TIMESTAMP}, #{creatorid,jdbcType=BIGINT}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{modifierid,jdbcType=BIGINT}, #{modifytime,jdbcType=TIMESTAMP}, 
+      #{cityid,jdbcType=INTEGER}, #{ishire,jdbcType=INTEGER}, #{isapplicationin,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pt.model.Company" >
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="certifiedstatus != null" >
+        certifiedStatus,
+      </if>
+      <if test="companysize != null" >
+        companySize,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="legalperson != null" >
+        legalPerson,
+      </if>
+      <if test="credentials != null" >
+        credentials,
+      </if>
+      <if test="video != null" >
+        video,
+      </if>
+      <if test="companynature != null" >
+        companyNature,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="contactor != null" >
+        contactor,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="sponsor != null" >
+        sponsor,
+      </if>
+      <if test="auditcomments != null" >
+        auditcomments,
+      </if>
+      <if test="auditorid != null" >
+        auditorId,
+      </if>
+      <if test="audittime != null" >
+        auditTime,
+      </if>
+      <if test="creatorid != null" >
+        creatorId,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="modifierid != null" >
+        modifierId,
+      </if>
+      <if test="modifytime != null" >
+        modifyTime,
+      </if>
+      <if test="cityid != null" >
+        cityId,
+      </if>
+      <if test="ishire != null" >
+        isHire,
+      </if>
+      <if test="isapplicationin != null" >
+        isApplicationIn,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="certifiedstatus != null" >
+        #{certifiedstatus,jdbcType=INTEGER},
+      </if>
+      <if test="companysize != null" >
+        #{companysize,jdbcType=INTEGER},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="legalperson != null" >
+        #{legalperson,jdbcType=VARCHAR},
+      </if>
+      <if test="credentials != null" >
+        #{credentials,jdbcType=VARCHAR},
+      </if>
+      <if test="video != null" >
+        #{video,jdbcType=VARCHAR},
+      </if>
+      <if test="companynature != null" >
+        #{companynature,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="contactor != null" >
+        #{contactor,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsor != null" >
+        #{sponsor,jdbcType=VARCHAR},
+      </if>
+      <if test="auditcomments != null" >
+        #{auditcomments,jdbcType=VARCHAR},
+      </if>
+      <if test="auditorid != null" >
+        #{auditorid,jdbcType=INTEGER},
+      </if>
+      <if test="audittime != null" >
+        #{audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorid != null" >
+        #{creatorid,jdbcType=BIGINT},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifierid != null" >
+        #{modifierid,jdbcType=BIGINT},
+      </if>
+      <if test="modifytime != null" >
+        #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cityid != null" >
+        #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="ishire != null" >
+        #{ishire,jdbcType=INTEGER},
+      </if>
+      <if test="isapplicationin != null" >
+        #{isapplicationin,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pt.model.Company" >
+    update company
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="certifiedstatus != null" >
+        certifiedStatus = #{certifiedstatus,jdbcType=INTEGER},
+      </if>
+      <if test="companysize != null" >
+        companySize = #{companysize,jdbcType=INTEGER},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="legalperson != null" >
+        legalPerson = #{legalperson,jdbcType=VARCHAR},
+      </if>
+      <if test="credentials != null" >
+        credentials = #{credentials,jdbcType=VARCHAR},
+      </if>
+      <if test="video != null" >
+        video = #{video,jdbcType=VARCHAR},
+      </if>
+      <if test="companynature != null" >
+        companyNature = #{companynature,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="contactor != null" >
+        contactor = #{contactor,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsor != null" >
+        sponsor = #{sponsor,jdbcType=VARCHAR},
+      </if>
+      <if test="auditcomments != null" >
+        auditcomments = #{auditcomments,jdbcType=VARCHAR},
+      </if>
+      <if test="auditorid != null" >
+        auditorId = #{auditorid,jdbcType=INTEGER},
+      </if>
+      <if test="audittime != null" >
+        auditTime = #{audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorid != null" >
+        creatorId = #{creatorid,jdbcType=BIGINT},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifierid != null" >
+        modifierId = #{modifierid,jdbcType=BIGINT},
+      </if>
+      <if test="modifytime != null" >
+        modifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cityid != null" >
+        cityId = #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="ishire != null" >
+        isHire = #{ishire,jdbcType=INTEGER},
+      </if>
+      <if test="isapplicationin != null" >
+        isApplicationIn = #{isapplicationin,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pt.model.Company" >
+    update company
+    set name = #{name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      certifiedStatus = #{certifiedstatus,jdbcType=INTEGER},
+      companySize = #{companysize,jdbcType=INTEGER},
+      logo = #{logo,jdbcType=VARCHAR},
+      legalPerson = #{legalperson,jdbcType=VARCHAR},
+      credentials = #{credentials,jdbcType=VARCHAR},
+      video = #{video,jdbcType=VARCHAR},
+      companyNature = #{companynature,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      latitude = #{latitude,jdbcType=DOUBLE},
+      contactor = #{contactor,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      sponsor = #{sponsor,jdbcType=VARCHAR},
+      auditcomments = #{auditcomments,jdbcType=VARCHAR},
+      auditorId = #{auditorid,jdbcType=INTEGER},
+      auditTime = #{audittime,jdbcType=TIMESTAMP},
+      creatorId = #{creatorid,jdbcType=BIGINT},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      modifierId = #{modifierid,jdbcType=BIGINT},
+      modifyTime = #{modifytime,jdbcType=TIMESTAMP},
+      cityId = #{cityid,jdbcType=INTEGER},
+      isHire = #{ishire,jdbcType=INTEGER},
+      isApplicationIn = #{isapplicationin,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

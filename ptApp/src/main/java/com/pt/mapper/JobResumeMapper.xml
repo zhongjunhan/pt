@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pt.mapper.JobResumeMapper" >
+  <resultMap id="BaseResultMap" type="com.pt.model.JobResume" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="jobid" property="jobid" jdbcType="INTEGER" />
+    <result column="resumeid" property="resumeid" jdbcType="INTEGER" />
+    <result column="ishandle" property="ishandle" jdbcType="BIT" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="handleuser" property="handleuser" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="updatedate" property="updatedate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, jobid, resumeid, ishandle, comment, handleuser, status, createdate, updatedate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from jobresume
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jobresume
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pt.model.JobResume" >
+    insert into jobresume (id, jobid, resumeid, 
+      ishandle, comment, handleuser, 
+      status, createdate, updatedate
+      )
+    values (#{id,jdbcType=INTEGER}, #{jobid,jdbcType=INTEGER}, #{resumeid,jdbcType=INTEGER}, 
+      #{ishandle,jdbcType=BIT}, #{comment,jdbcType=VARCHAR}, #{handleuser,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, #{updatedate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pt.model.JobResume" >
+    insert into jobresume
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="jobid != null" >
+        jobid,
+      </if>
+      <if test="resumeid != null" >
+        resumeid,
+      </if>
+      <if test="ishandle != null" >
+        ishandle,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="handleuser != null" >
+        handleuser,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createdate != null" >
+        createdate,
+      </if>
+      <if test="updatedate != null" >
+        updatedate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="jobid != null" >
+        #{jobid,jdbcType=INTEGER},
+      </if>
+      <if test="resumeid != null" >
+        #{resumeid,jdbcType=INTEGER},
+      </if>
+      <if test="ishandle != null" >
+        #{ishandle,jdbcType=BIT},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="handleuser != null" >
+        #{handleuser,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pt.model.JobResume" >
+    update jobresume
+    <set >
+      <if test="jobid != null" >
+        jobid = #{jobid,jdbcType=INTEGER},
+      </if>
+      <if test="resumeid != null" >
+        resumeid = #{resumeid,jdbcType=INTEGER},
+      </if>
+      <if test="ishandle != null" >
+        ishandle = #{ishandle,jdbcType=BIT},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="handleuser != null" >
+        handleuser = #{handleuser,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedate != null" >
+        updatedate = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pt.model.JobResume" >
+    update jobresume
+    set jobid = #{jobid,jdbcType=INTEGER},
+      resumeid = #{resumeid,jdbcType=INTEGER},
+      ishandle = #{ishandle,jdbcType=BIT},
+      comment = #{comment,jdbcType=VARCHAR},
+      handleuser = #{handleuser,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      updatedate = #{updatedate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

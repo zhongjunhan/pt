@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pt.mapper.PraiseMapper" >
+  <resultMap id="BaseResultMap" type="com.pt.model.Praise" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="circleId" property="circleid" jdbcType="BIGINT" />
+    <result column="praiser" property="praiser" jdbcType="BIGINT" />
+    <result column="praiseTime" property="praisetime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, circleId, praiser, praiseTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from praise
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from praise
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pt.model.Praise" >
+    insert into praise (id, circleId, praiser, 
+      praiseTime)
+    values (#{id,jdbcType=BIGINT}, #{circleid,jdbcType=BIGINT}, #{praiser,jdbcType=BIGINT}, 
+      #{praisetime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pt.model.Praise" >
+    insert into praise
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="circleid != null" >
+        circleId,
+      </if>
+      <if test="praiser != null" >
+        praiser,
+      </if>
+      <if test="praisetime != null" >
+        praiseTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="circleid != null" >
+        #{circleid,jdbcType=BIGINT},
+      </if>
+      <if test="praiser != null" >
+        #{praiser,jdbcType=BIGINT},
+      </if>
+      <if test="praisetime != null" >
+        #{praisetime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pt.model.Praise" >
+    update praise
+    <set >
+      <if test="circleid != null" >
+        circleId = #{circleid,jdbcType=BIGINT},
+      </if>
+      <if test="praiser != null" >
+        praiser = #{praiser,jdbcType=BIGINT},
+      </if>
+      <if test="praisetime != null" >
+        praiseTime = #{praisetime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pt.model.Praise" >
+    update praise
+    set circleId = #{circleid,jdbcType=BIGINT},
+      praiser = #{praiser,jdbcType=BIGINT},
+      praiseTime = #{praisetime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

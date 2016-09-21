@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pt.mapper.CommentCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.pt.model.CommentComment" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="commentId" property="commentid" jdbcType="BIGINT" />
+    <result column="circleId" property="circleid" jdbcType="BIGINT" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="replytoId" property="replytoid" jdbcType="INTEGER" />
+    <result column="commentatorId" property="commentatorid" jdbcType="BIGINT" />
+    <result column="commentTime" property="commenttime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, commentId, circleId, comment, replytoId, commentatorId, commentTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from commentcomment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from commentcomment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.pt.model.CommentComment" >
+    insert into commentcomment (id, commentId, circleId, 
+      comment, replytoId, commentatorId, 
+      commentTime)
+    values (#{id,jdbcType=BIGINT}, #{commentid,jdbcType=BIGINT}, #{circleid,jdbcType=BIGINT}, 
+      #{comment,jdbcType=VARCHAR}, #{replytoid,jdbcType=INTEGER}, #{commentatorid,jdbcType=BIGINT}, 
+      #{commenttime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pt.model.CommentComment" >
+    insert into commentcomment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="commentid != null" >
+        commentId,
+      </if>
+      <if test="circleid != null" >
+        circleId,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="replytoid != null" >
+        replytoId,
+      </if>
+      <if test="commentatorid != null" >
+        commentatorId,
+      </if>
+      <if test="commenttime != null" >
+        commentTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="commentid != null" >
+        #{commentid,jdbcType=BIGINT},
+      </if>
+      <if test="circleid != null" >
+        #{circleid,jdbcType=BIGINT},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="replytoid != null" >
+        #{replytoid,jdbcType=INTEGER},
+      </if>
+      <if test="commentatorid != null" >
+        #{commentatorid,jdbcType=BIGINT},
+      </if>
+      <if test="commenttime != null" >
+        #{commenttime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pt.model.CommentComment" >
+    update commentcomment
+    <set >
+      <if test="commentid != null" >
+        commentId = #{commentid,jdbcType=BIGINT},
+      </if>
+      <if test="circleid != null" >
+        circleId = #{circleid,jdbcType=BIGINT},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="replytoid != null" >
+        replytoId = #{replytoid,jdbcType=INTEGER},
+      </if>
+      <if test="commentatorid != null" >
+        commentatorId = #{commentatorid,jdbcType=BIGINT},
+      </if>
+      <if test="commenttime != null" >
+        commentTime = #{commenttime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pt.model.CommentComment" >
+    update commentcomment
+    set commentId = #{commentid,jdbcType=BIGINT},
+      circleId = #{circleid,jdbcType=BIGINT},
+      comment = #{comment,jdbcType=VARCHAR},
+      replytoId = #{replytoid,jdbcType=INTEGER},
+      commentatorId = #{commentatorid,jdbcType=BIGINT},
+      commentTime = #{commenttime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pt.mapper.SocialMilieuMapper" >
+  <resultMap id="BaseResultMap" type="com.pt.model.SocialMilieu" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="fileAddress" property="fileaddress" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="DOUBLE" />
+    <result column="latitude" property="latitude" jdbcType="DOUBLE" />
+    <result column="isAllCanSee" property="isallcansee" jdbcType="INTEGER" />
+    <result column="creatorId" property="creatorid" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="companyId" property="companyid" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, description, fileAddress, address, longitude, latitude, isAllCanSee, creatorId, 
+    createTime, companyId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from socialmilieu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from socialmilieu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.pt.model.SocialMilieu" >
+    insert into socialmilieu (id, description, fileAddress, 
+      address, longitude, latitude, 
+      isAllCanSee, creatorId, createTime, 
+      companyId)
+    values (#{id,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{fileaddress,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, 
+      #{isallcansee,jdbcType=INTEGER}, #{creatorid,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{companyid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pt.model.SocialMilieu" >
+    insert into socialmilieu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="fileaddress != null" >
+        fileAddress,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="isallcansee != null" >
+        isAllCanSee,
+      </if>
+      <if test="creatorid != null" >
+        creatorId,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="companyid != null" >
+        companyId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="fileaddress != null" >
+        #{fileaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="isallcansee != null" >
+        #{isallcansee,jdbcType=INTEGER},
+      </if>
+      <if test="creatorid != null" >
+        #{creatorid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyid != null" >
+        #{companyid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pt.model.SocialMilieu" >
+    update socialmilieu
+    <set >
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="fileaddress != null" >
+        fileAddress = #{fileaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="isallcansee != null" >
+        isAllCanSee = #{isallcansee,jdbcType=INTEGER},
+      </if>
+      <if test="creatorid != null" >
+        creatorId = #{creatorid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyid != null" >
+        companyId = #{companyid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pt.model.SocialMilieu" >
+    update socialmilieu
+    set description = #{description,jdbcType=VARCHAR},
+      fileAddress = #{fileaddress,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      latitude = #{latitude,jdbcType=DOUBLE},
+      isAllCanSee = #{isallcansee,jdbcType=INTEGER},
+      creatorId = #{creatorid,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      companyId = #{companyid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
